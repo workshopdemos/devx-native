@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOCAL_DIR=/home/developer/doggos-gse/scripts/files
+LOCAL_DIR=/home/developer/devx-native/scripts/files
 
 user=$(env | grep OWNER_EMAIL | sed 's/@.*//' | sed 's/^.*=//')
 value="${user#mfwsuser}"
