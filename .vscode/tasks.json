@@ -1,0 +1,117 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "DOGGOS: Update Debugger UserID",
+      "type": "shell",
+      "command": ["sed -i -e 's/CRLC##/${input:user_name}/g' .vscode/launch.json"],
+      "problemMatcher": [
+        // it will not do anything, but save the participants from another quickpick :)
+        "$tsc"
+      ]
+    },
+    {
+      "label": "DOGGOS: create endevor service profile",
+      "type": "shell",
+      "command": [
+        "zowe",
+        "profiles create endevor-profile",
+        "sample-gse-profile",
+        "--host 35.245.180.49",
+        "--port 40050",
+        "--user ${input:user_name}",
+        "--password ${input:user_name}",
+        "--prot http",
+        "--base-path EndevorService/api/v2",
+        "--reject-unauthorized false",
+        "--overwrite"
+      ],
+      "problemMatcher": [
+        // it will not do anything, but save the participants from another quickpick :)
+        "$tsc"
+      ]
+    },
+    {
+      "label": "DOGGOS: build the source code",
+      "type": "shell",
+      "command": [
+        "zowe",
+        "endevor-bridge-for-git build execute",
+        "--endevor-profile sample-gse-profile",
+        "--endevor-instance ENDEVOR",
+        "--endevor-environment SMPLTEST",
+        "--endevor-system GSECONF",
+        "--endevor-subsystem ${input:user_name}"
+      ],
+      "problemMatcher": [
+        // it will not do anything, but save the participants from another quickpick :)
+        "$tsc"
+      ]
+    },
+    {
+      "label": "DOGGOS: run tests",
+      "type": "npm",
+      "script": "test",
+      "group": "test",
+      "problemMatcher": [
+        // it will not do anything, but save the participants from another quickpick :)
+        "$tsc"
+      ]
+    },
+    {
+      "label": "DOGGOS: install",
+      "type": "shell",
+      "command": "npm ci --silent",
+      "problemMatcher": [
+        // it will not do anything, but save the participants from another quickpick :)
+        "$tsc"
+      ]
+    },
+    {
+      "label": "DOGGOS: configure",
+      "type": "shell",
+      "command": "sh scripts/configure.sh ${input:user_name}",
+      "problemMatcher": [
+        // it will not do anything, but save the participants from another quickpick :)
+        "$tsc"
+      ]
+    },
+    {
+      "label": "DOGGOS: upload file",
+      "type": "shell",
+      "command": "sh scripts/upload-file.sh ${input:user_name}",
+      "problemMatcher": [
+        // it will not do anything, but save the participants from another quickpick :)
+        "$tsc"
+      ]
+    },
+    {
+      "label": "DOGGOS: synchronize remote location",
+      "type": "shell",
+      "command": "syncz",
+      "problemMatcher": [
+        // it will not do anything, but save the participants from another quickpick :)
+        "$tsc"
+      ]
+    },
+    {
+      "label": "DOGGOS: Sync and Build",
+      "type": "process",
+      "command": "/home/developer/sandbox-env/syncz_v1.20.0/bin/linux_amd64/syncz",
+      "args": ["-c", "bldz"],
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "user_name",
+      "description": "A participant USERID.",
+      "default": "CRLC##",
+      "type": "promptString"
+    }
+  ]
+}
