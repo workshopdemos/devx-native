@@ -190,7 +190,6 @@ Code after change:
 </pre>
 
 From the command line, run the `t4z` command.
-
 Expected output:
 
 ```
@@ -213,7 +212,6 @@ Time:         1 s
 ```
 
 You will observe that the test run is a failure. The actual value is `008` but we have the expected value to be `009`.
-
 Before continuing, revert the change back to:
 <pre>
            MOVE <b>008</b> TO EXPECTED_ADOPTIONS(1).
@@ -242,7 +240,6 @@ The IntelliSense will offer you possible code completions using the Test4z snipp
 <img src='images/test4z/image_test1.png' width='65%'>
 
 Select “t4z Message write”.
-
 This will fill in the code for you:
 
 <img src='images/test4z/image_code_snippet.png' width='65%'>
@@ -260,7 +257,6 @@ From the command line, run `t4z`. The expected output is:
 
 <pre>
 ❯ t4z
-
  PASS  DOGGOS/COBTEST/TDOGGOS.cbl
   ✓ DOGGOS simple run (110 ms)
       <b>Hello Test4z!</b>
@@ -272,7 +268,5 @@ Tests Suites: 1 passed, 1 total
 Tests:        4 passed, 4 total
 Time:         2 s
 </pre>
-
 ## Summary
-
 This demo scenario demonstrates how to generate a test coverage report, edit a test case, and add Test4z statements to a test file.
