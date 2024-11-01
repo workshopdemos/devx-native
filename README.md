@@ -11,7 +11,7 @@
 4. Close the terminal from it's right top corner
 
 ## Get familiar with the VSCode Activity Bar
-<img src='images/activityBar.png' width='50%'>
+<img src='images/activityBar.png' width='40%'>
 
 ## Build the DOGGOS application
 
@@ -25,17 +25,18 @@
 
 ## Run the DOGGOS application
 1. Go to Zowe Explorer (Z icon in the VS Code Activity Bar)
-2. Hover the “zosmf” item in the DATA SET section in the sidebar and click on the magnifier icon. Enter CUST0xy in the search field and hit enter. Note that CUST0xy is the mainframe user id that is shared by your instructor. 
-3. Fill in the data set: CUST0xy.PUBLIC to add all data sets with this prefix to Zowe Explorer (Use your userID number instead of CUST0xy) 
+2. Hover the “zosmf” item in the DATA SET section in the sidebar and click on the magnifier icon. Enter CUST0xy.PUBLIC in the search field and hit enter. Note that CUST0xy is the mainframe user id that is shared by your instructor. 
 4. Expand the CUST0xy.PUBLIC.JCL data set and right-click on the RUNDOG
 5. Select “Submit Job” menu item, then click "Submit" from the pop-up window 
 6. Click on the JOB number in the pop-up message in the right bottom corner to see the JOB output (if the notification disappears, you can hit the bell icon from the bottom-right corner to see)
-7. Expand the “RUNDOG(JOBxxxxx)” and click on the RUN:OUTREP item to browse the program output (Repeat the 6th step if you cannot expand the job output)
-8. Breeds not specified in the COBOL code, fall into the OTHER section in the execution report. Now, your task is to add one more breed to the program to result in printing it in this report
+7. Expand the “RUNDOG(JOBxxxxx)” in the JOBS section and click on the RUN:OUTREP item to browse the program output (Repeat the 6th step if you cannot expand the job output)
+8. Breeds that are not specified in the COBOL code, fall into the OTHER section in the execution report. Now, your task is to add one more breed to the program to result in printing it in this report
 
 ## Edit the DOGGOS application
 Navigate back to the File Explorer Tab to see the local files
+
 Open the DOGGOS → COBOL → DOGGOS.CBL file
+
 Add a new dog breed by following:
 1. Copy block of code (lines 59-61) (You can use CTRL+G to jump into the given line number)
 2. Paste it after line 61
@@ -87,7 +88,7 @@ The new dog breed “HUSKY” is listed and the counter reports 11 adopted HUSKY
 
 ## Debug
 
-1. Let’s introduce a bug in the program data 🙂 Go to the input file and change the breed from “JINGO” to “JINGA”
+1. Let’s introduce a bug in the program data 🙂 Go to the input file again and change the breed from “JINGO” to “JINGA”
 2. Use CTRL+S (or COMMAND+S) to save the changes
 3. Rerun the application by repeating the steps in the previous section (from the 6th step)
 4. Open the output file and see that the report is wrong, it now contains 0 for JINGO and 6 for the OTHER
@@ -165,7 +166,7 @@ Enter “Test4z Run All Tests with Coverage” like on the following screenshot:
 
 This will run the tests and generate the report.
 
-<img src='images/test4z/image_coverage_report.png' width='85%'>
+<img src='images/test4z/image_coverage_report.png' width='70%'>
 
 The Code Coverage dashboard will be opened automatically:
 
@@ -173,13 +174,17 @@ The Code Coverage dashboard will be opened automatically:
 
 To see the statement-level code coverage, click on the `DOGGOS.cbl` file in the report:
 
-<img src='images/test4z/image_statement_level_coverage.png' width='85%'>
+<img src='images/test4z/image_statement_level_coverage.png' width='60%'>
 
 ## Edit a Test Case
+
+Go to File Explorer (second icon in the VSCode Activity Bar)
 
 Open the [`TDOGGOS.cbl`](DOGGOS/COBTEST/TDOGGOS.cbl#L266) file under `DOGGOS`/`COBTEST` folder and edit the test case.
 
 Find `MOVE 008 TO EXPECTED_ADOPTIONS(1).` and change it to `MOVE 009 TO EXPECTED_ADOPTIONS(1).`.
+
+Save the file
 
 Code after change:
 
@@ -189,7 +194,7 @@ Code after change:
            MOVE 000 TO EXPECTED_ADOPTIONS(2).
 </pre>
 
-From the command line, run the `t4z` command.
+From the command line (terminal), run the `t4z` command.
 Expected output:
 
 ```
@@ -217,6 +222,8 @@ Before continuing, revert the change back to:
            MOVE <b>008</b> TO EXPECTED_ADOPTIONS(1).
 </pre>
 
+Save the file
+
 ## Add a Test4z Statement to the Test File
 
 Open the [`TDOGGOS.cbl`](DOGGOS/COBTEST/TDOGGOS.cbl#L136) file under `DOGGOS`/`COBTEST` folder and edit the test case.
@@ -237,12 +244,12 @@ Add a new line after `ENTRY 'TEST1'`.
 Move the cursor the start of Area B (column 12) and type `t4z me`.
 The IntelliSense will offer you possible code completions using the Test4z snippets as you can see in the screenshot:
 
-<img src='images/test4z/image_test1.png' width='65%'>
+<img src='images/test4z/image_test1.png' width='55%'>
 
 Select “t4z Message write”.
 This will fill in the code for you:
 
-<img src='images/test4z/image_code_snippet.png' width='65%'>
+<img src='images/test4z/image_code_snippet.png' width='55%'>
 
 Replace `'Your Message'` with `'Hello Test4z!'` and save the file with code like that:
 
