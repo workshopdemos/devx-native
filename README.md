@@ -61,7 +61,7 @@ To apply these changes, you will need to rebuild the application:
 
 1. Click on the hamburger menu (three lines) icon at the top of the sidebar
 1. Select Terminal → New Terminal
-1. Make sure the command line starts with: ```developer@ws-<"a-long-number-here">:~/doggos-gse```
+1. Make sure the command line starts with: ```developer@ws-<"a-long-number-here">:~/devx-native```
 1. Issue the following command to build and deploy the application to a data set: ```syncz -c "bldz"``` and hit Enter key
 	(Click “Allow or Paste” if you see the pop-up window asking about copying and pasting permissions)
 
