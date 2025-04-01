@@ -15,8 +15,6 @@
     "editor.formatOnSave": true
   },
   "files.autoSave": "off",
-  "extensions.autoCheckUpdates": false,
-  "extensions.autoUpdate": false,
   "zowe.security.secureCredentialsEnabled": false,
   "json.schemas": [
     {
